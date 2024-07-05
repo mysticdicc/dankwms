@@ -1,0 +1,35 @@
+@page "/"
+<PageTitle>Index</PageTitle>
+<div style="width: 100%px; height: 35px; display: flex; justify-content: center">
+    <input type="text" style="width: 626px; height: 35px; display: inline-flex; color: #373737" @bind-value="@search">
+    <div style="width: 40px; height: 20px; visibility: hidden"></div>
+    <RadzenButton Style="width: 223px; height: 35px" Text="Search" ButtonStyle="Radzen.ButtonStyle.Light" Click="@Button0Click"></RadzenButton>
+</div>
+<div style="width: 100%; height: 38px; visibility: hidden"></div>
+<div style="width: 100%; display: flex; visibility: visible; float: none; position: relative; justify-content: center; height: 590px">
+    <RadzenDataGrid TItem="WmsEntry" Data="@wmsEntries" AllowSorting="true" AllowPaging="true" AllowFiltering="true" Style="width: 50%; height: 590px; float: right" EditMode="Radzen.DataGridEditMode.Single" RowSelect="@DataGrid0RowSelect" PageSize="15" >
+        <Columns>
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Id" Title="Id" />
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Name" Title="Name" />
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Description" Title="Description" />
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Location" Title="Location" />
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Keywords" Title="Keywords" />
+            <RadzenDataGridColumn TItem="Dankwms.WmsEntry" Property="Picture" Title="Picture" />
+        </Columns>
+    </RadzenDataGrid>
+    <div style="width: 326px; height: 590px; position: relative; top: 0; right: 0; margin-left: 40px; justify-content: center">
+        <RadzenImage Style="width: 100%; height: 241px; display: block" Path="@imgPath"></RadzenImage>
+        <div style="width: 100%; height: 330px; position: absolute; justify-content: center; display: table; align-content: center; text-align: center; margin-top: 5px">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@id" readonly="true">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@name">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@description">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@location">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@keywords">
+            <input type="text" style="width: 80%; height: 34px; margin-top: 5px; margin-bottom: 5px; color: #373737" @bind-value="@picture">
+            <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Style="width: 70%; height: 35px; margin-top: 5px" Text="Update" Click="@updateButtonClick"></RadzenButton>
+        </div>
+    </div>
+</div>
+<div style="width: 100%; height: 40px; margin-top: 20px; text-align: center; justify-content: center; display: flex; align-content: center">
+    <RadzenTextBox Style="width: 80%; height: 40px; color: #858585; text-align: left; display: grid" @bind-Value="@lastSql" ReadOnly="true"></RadzenTextBox>
+</div>
